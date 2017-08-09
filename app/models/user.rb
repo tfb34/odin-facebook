@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-	before_save :downcase_email
+	before_save {email.downcase!}
+
+	#attr_accessible :date
 
 	validates :name, presence: true, length: {maximum: 70}
 
@@ -11,10 +13,5 @@ class User < ApplicationRecord
 
 	validates :birthdate, presence: true
 
-	private
-
-	#convert email to lowercase when saving 
-	def downcase_email 
-		self.email.downcase!
-	end
+	
 end

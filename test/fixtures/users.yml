@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-#one:
-  #name: MyString
-  #email: MyString
-  #birthdate: 2017-08-07
+one:
+  name: MyString
+  email: MyString@gmail.com
+  birthdate: 2017-08-07
 
 #two:
  # name: MyString
