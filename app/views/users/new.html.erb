@@ -2,6 +2,8 @@
 <p>Find me in app/views/users/new.html.erb</p>
 
 <%= form_for @user do |f| %>
+	<%=render 'shared/error_messages'%>
+	
 	Name: <%= f.text_field :name %><br>
 	Email: <%= f.email_field :email%><br>
 	Birthdate: 
