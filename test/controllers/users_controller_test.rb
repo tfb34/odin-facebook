@@ -73,6 +73,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_difference('User.count', -1) do 
       delete user_path(@user)
     end
+    assert_redirected_to root_path
     assert_match "User profile was successfully deleted.", flash[:success]
   end
 

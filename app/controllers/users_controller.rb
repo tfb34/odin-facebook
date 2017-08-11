@@ -27,10 +27,9 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if @user.destroy
        flash[:success] = "User profile was successfully deleted."
-       redirect_to '#'
-    else
-      flash.now[:warning] = "User profile does not exist."
+       redirect_to root_path
     end
+
   end
 
   #show user profile
