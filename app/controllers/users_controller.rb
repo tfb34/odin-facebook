@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   #create new user and redirect to profile
   def create
   	@user = User.new(user_params)
-  	@user.birthdate = get_date
+
   	if @user.save
   		flash[:success] = "User was successfully created."
   		redirect_to @user 
@@ -23,7 +23,14 @@ class UsersController < ApplicationController
   end
 
   #delete user and redirect to homepage
-  def delete
+  def destroy
+    @user = User.find_by(id: params[:id])
+    if @user.destroy
+       flash[:success] = "User profile was successfully deleted."
+       redirect_to '#'
+    else
+      flash.now[:warning] = "User profile does not exist."
+    end
   end
 
   #show user profile
@@ -33,21 +40,24 @@ class UsersController < ApplicationController
 
   #return form for specific user
   def edit
+    @user = User.find_by(id: params[:id])
   end
 
   #update attributes using the edit form returned, return to profile
   def update
+    @user = User.find_by(id: params[:id])
+    if @user.update_attributes(user_params)
+      flash.now[:success] = "Your profile has been successfully updated"
+    else
+      flash.now[:danger] = "Your profile could not be updated"
+    end
+    render 'edit'
   end
 
   private
 
   def user_params
-  	params.require(:user).permit(:name, :email)
-  end
-
-  def get_date
-  	date = params[:date]
-  	Date.new(date[:year].to_i, date[:month].to_i, date[:day].to_i)
+  	params.require(:user).permit(:name, :email,:birthdate)
   end
 
 

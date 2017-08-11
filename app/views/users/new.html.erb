@@ -1,15 +1,4 @@
 <h1>Users#new</h1>
 <p>Find me in app/views/users/new.html.erb</p>
 
-<%= form_for @user do |f| %>
-	<%=render 'shared/error_messages'%>
-	
-	Name: <%= f.text_field :name %><br>
-	Email: <%= f.email_field :email%><br>
-	Birthdate: 
-	<%= select_month(Date.today)%>
-	<%= select_day(Date.today) %>
-	<%= select_year(Date.today, start_year: Date.today.year, end_year: 1900)%>
-	<%= f.submit %>
-
-<% end %>
+<%= render 'shared/user_form' %>

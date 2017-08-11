@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  email: MyString@gmail.com
-  birthdate: 2017-08-07
+Buffy:
+  name: Buffy Summers
+  email: vampslayer@example.com
+  birthdate: 1981-01-19
 
 #two:
  # name: MyString
