@@ -86,4 +86,4 @@ production:
   <<: *default
   database: odin-facebook_production
   username: <%=ENV["DATABASE_USERNAME"]%>
-  password: <%= ENV['ODINFACEBOOK_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
