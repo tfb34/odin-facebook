@@ -6,15 +6,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
   </head>
 
   <body>
   	<% flash.each do |key,msg|%>
   		<p><b><%=key%></b> <%=msg%></p>
   	<%end%>
-
-    <%= link_to 'home', root_path%>
-    <%= link_to 'sign up', new_user_path%>
+    
+    <%= render 'layouts/header'%>
     <%= yield %>
   </body>
 </html>
