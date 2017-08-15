@@ -46,8 +46,6 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if @user.update_attributes(user_params)
       flash.now[:success] = "Your profile has been successfully updated"
-    else
-      flash.now[:danger] = "Your profile could not be updated"
     end
     render 'edit'
   end
