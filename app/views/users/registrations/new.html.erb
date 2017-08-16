@@ -1,0 +1,35 @@
+<h2 style="text-align: center;">Sign up</h2><br>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <%= form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
+
+    <!--<%= devise_error_messages! %>-->
+      <%=render 'shared/error_messages'%>
+      
+      <%= f.label :name, "Name:" %>
+      <%= f.text_field :name, class: "form-control", placeholder: "Enter name", autofocus: true%><br>
+      
+      <%= f.label :email, "Email:" %>
+      <%= f.email_field :email, class: "form-control", placeholder: "Enter email"%><br>
+    
+      <%= f.label :birthdate, "Birthdate:"%><br>
+      <%= f.date_select :birthdate, {order: [:month, :day, :year], start_year: Date.today.year, end_year: Date.today.year - 100, class: "form-control"}, {required: true}%><br><br>
+      
+      <%= f.label :password, "Password:" %>
+      <%= f.password_field :password, class: "form-control", placeholder: "Enter password", autocomplete: "off"%><br>
+    
+      <%= f.label :password_confirmation, "Password Confirmation:" %>
+      <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off", placeholder: "Enter password confirmation" %><br>
+      
+
+      <%=f.submit "Create my account", class: "btn btn-primary btn-block"%>
+    
+  <% end %>
+  </div>
+</div>
+<br>
+<div class="col-md-6 col-md-offset-3" style="text-align: center;">
+  <%= render "users/shared/links" %>
+</div>
+

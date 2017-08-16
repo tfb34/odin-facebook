@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
 	before_save {email.downcase!}
+	
 
 	validates :name, presence: true, length: {maximum: 70}
 
@@ -18,6 +19,7 @@ class User < ApplicationRecord
 	validates_presence_of 	  :password, :on => :create
 	validates_confirmation_of :password, :on => :create
 	validates_length_of       :password, :within => Devise.password_length, allow_blank: true
+	
 	
 end
 
