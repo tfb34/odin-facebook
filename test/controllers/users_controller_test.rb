@@ -52,12 +52,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "unsuccessful user update" do 
-     patch user_path(@user), params: { user: {name: @user.name,
+     patch user_path(@user), params: { user: {name: "",
                                               email: "summers@example",
                                               birthdate: @user.birthdate,
                                               }
                                       }
-     assert_match "could not", @response.body
+     assert_match "error", @response.body
   end
 
   test "successful user update" do 
