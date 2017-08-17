@@ -30,15 +30,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "successful user creation" do 
     assert_difference 'User.count' do 
-      post users_path, params: { user: {:name=>"Ragnor",
+      post user_registration_path, params: { user: {:name=>"Ragnor",
                                      :email=>"ragnarsson@example.com",
-                                     :birthdate => Date.today - 30.years}
+                                     :birthdate => Date.today - 30.years,
+                                     :password => "password",
+                                     :password_confirmation => "password"}
                             }
     end
     assert_redirected_to user_path(User.last)
     follow_redirect!
-    assert_equal 'User was successfully created.', flash[:success]
-    assert_match "User was successfully created.", @response.body
+    #assert_equal 'Welcome! You have signed up successfully.', flash[:success]
+    assert_match "Welcome! You have signed up successfully.", @response.body
   end
 
   test "unsuccessful user creation" do 
