@@ -7,11 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create(name: 'Mary', email: 'example@gmail.com',
-						 birthdate: Date.new(1985,4,6))
+User.create(name: 'Mary', email: 'example@example.com',
+						 birthdate: Date.new(1985,4,6),
+						 password: "password")
 
-User.create(name: 'Erik', email: 'example2@gmail.com',
-						birthdate: Date.new(1979,7,20))
+User.create(name: 'Erik', email: 'example2@example.com',
+						birthdate: Date.new(1979,7,20),
+						password: "password")
 
-User.create(name: 'Hewlitt', email: 'example3@gmail.com',
-							birthdate: Date.new(1994,12, 14))
+User.create(name: 'Hewlitt', email: 'example3@example.com',
+							birthdate: Date.new(1994,12, 14),
+							password: "password")

@@ -20,7 +20,27 @@ class User < ApplicationRecord
 	validates_confirmation_of :password, :on => :create
 	validates_length_of       :password, :within => Devise.password_length, allow_blank: true
 	
+
+	has_many :sent_invites, class_name: "FriendRequest", 
+							foreign_key: "sender_id", 
+							dependent: :destroy
+
+	has_many :followings, through: :sent_invites, source: :receiver
+
+	has_many :received_invites, class_name: "FriendRequest", 
+								foreign_key: "receiver_id",
+								dependent: :destroy
+    
+    has_many :followers, through: :received_invites, source: :sender 
+
+    
 	
+	#add friend -> create friend request (friendRequest#create)
+    #  build and save request
+
+    # unfriend 
+
+    #show followers and followings
 end
 
 

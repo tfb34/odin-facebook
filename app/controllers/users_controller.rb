@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   	@user = User.new
   end
 
+#NO LONGER NEEDED; taken care by devise modules
   #create new user and redirect to profile
   def create
   	@user = User.new(user_params)
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
   		render 'new'
   	end
   end
-
+#NO LONGER NEEDED
   #delete user and redirect to homepage
   def destroy
     @user = User.find_by(id: params[:id])
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
-  #update attributes using the edit form returned, return to profile
+  #NO LONGER NEEDED 
   def update
     @user = User.find_by(id: params[:id])
     if @user.update_attributes(user_params)

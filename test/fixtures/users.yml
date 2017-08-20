@@ -4,8 +4,10 @@ Buffy:
   name: Buffy Summers
   email: vampslayer@example.com
   birthdate: 1981-01-19
+  
 
-#two:
- # name: MyString
- # email: MyString
-  #birthdate: 2017-08-07
+Charles:
+ name: Charles Xavier
+ email: eggssavior@example.com
+ birthdate: 1970-05-17
+ 

@@ -3,7 +3,6 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
   	@user = users(:Buffy)
-    @user.save
   end
 
   test "should get new" do
