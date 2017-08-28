@@ -6,7 +6,8 @@
 
     <ul class="nav navbar-nav navbar-right">
        <% if user_signed_in? %>
-         <li><a href="#">Notifcations <span class="badge"><%=current_user.followers.count%></span></a></li>
+         <li><%=link_to 'Friends', friendships_path%></li>
+         <li><a href= <%=friend_requests_path%>>Notifcations <span class="badge"><%=current_user.followers.count%></span></a></li>
          <li><%=link_to current_user.name, user_path(current_user)%></li>
          <li><%=link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
        <%else%>

@@ -54,4 +54,25 @@ class UserTest < ActiveSupport::TestCase
   	@user.save
   	assert_not @user2.valid?
   end
+
+  test "should destroy dependent objects" do 
+    #save user
+    @user = users(:Buffy)
+    @user2 = users(:Charles)
+    
+    @user.sent_invites.build(receiver_id: @user2.id).save
+    
+    assert_difference 'FriendRequest.count', -1 do
+      @user.destroy
+    end
+
+    @user.friendships.build(friend_id: @user2.id).save
+
+    assert_difference 'Friendship.count', -1 do 
+      @user2.destroy
+    end
+    
+  end
+
+
 end

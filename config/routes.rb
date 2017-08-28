@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about'
   resources :users
 
-  resources :friend_requests, only: [:create, :destroy]
+  resources :friend_requests, only: [:create, :destroy, :index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :friendships, only: [:create, :destroy, :index]
 end

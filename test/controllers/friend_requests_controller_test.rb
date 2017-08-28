@@ -16,7 +16,7 @@ class FriendRequestsControllerTest < ActionDispatch::IntegrationTest
 
 		#send friend request
 		other = users(:Charles)
-		assert_difference('FriendRequest.count', 1) do 
+		assert_difference 'FriendRequest.count' do 
 			post friend_requests_path(params:{id: other.id})
 		end
 	end
@@ -27,13 +27,26 @@ class FriendRequestsControllerTest < ActionDispatch::IntegrationTest
 
 		#send friend request
 		other = users(:Charles)
-		assert_difference('FriendRequest.count', 1) do 
+		assert_difference 'FriendRequest.count' do 
 			post friend_requests_path(params:{id: other.id})
 		end
 
 		#send duplicate friend request
-		assert_no_difference('FriendRequest.count') do 
+		assert_no_difference 'FriendRequest.count' do 
 			post friend_requests_path(params:{id: other.id})
+		end
+	end
+
+	test "friend request may be cancelled by sender" do 
+		# login
+		sign_in users(:Buffy)
+		#send friend request
+		assert_difference 'FriendRequest.count' do
+		post friend_requests_path(params:{id: users(:Charles).id})
+	    end
+		#cancel friend request
+		assert_difference 'FriendRequest.count', -1 do 
+			delete friend_request_path(id: users(:Charles).id)
 		end
 	end
 

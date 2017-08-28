@@ -1,0 +1,8 @@
+<h2 style= "text-align: left;">Friend Requests</h2>
+<ul>
+	
+	<% current_user.followers.each do |f|%>
+		<li><%=link_to f.name, user_path(f) %> | <%=link_to 'Accept', friendships_path(id: f.id), method: :post%></li>
+	<%end%>
+	
+</ul>
