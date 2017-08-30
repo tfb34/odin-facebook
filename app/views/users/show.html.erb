@@ -1,3 +1,22 @@
 <h1><%= @user.name %>'s Homepage</h1>
-<%=link_to 'edit', edit_user_registration_path%>
+<%if user_signed_in?%>
+	<%if @user == current_user %>
+		<%=link_to 'edit', edit_user_registration_path%>
+    <%else%>
+    	<%if current_user.friends.include?(@user) || current_user.inverse_friends.include?(@user)%>
+    		<%= link_to 'Remove friend', friendship_path(id: @user.id), method: :delete%>
+    	<%else%>
+    		<%if current_user.followers.include?(@user)%>
+    			<%= link_to 'Accept friend', friendships_path(id: @user.id), method: :post%>
+    		<%else%>
+    			<%if current_user.followings.include?(@user)%>
+    				<%= link_to 'Cancel friend request', friend_request_path(id: @user.id), method: :delete%>
+    			<%else%>
+    				<%= link_to 'Add friend', friend_requests_path(id: @user.id), method: :post%>
+    			<%end%>
+    		<%end%>
+    	<%end%>
+    <%end%>
+<%end%>
+
 
