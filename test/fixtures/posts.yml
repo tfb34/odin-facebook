@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+sushi:
+  content: "10 minutes old message"
+  created_at: <%=10.minutes.ago%>
+
+ghost_bear:
+  content: "10 hours old message. Mother bear is either foolhardy or brave."
+  created_at: <%= 10.hours.ago%>
+
+most_recent:
+  content: "Most recent message"
+  created_at: <%=Time.zone.now%>
+
+mirth:
+  content: "2 days old message"
+  created_at: <%=2.days.ago%>
+
+oldest:
+  content: "Oldest message"
+  created_at: <%= 10.years.ago%>
+
+

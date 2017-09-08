@@ -55,8 +55,8 @@ class UserTest < ActiveSupport::TestCase
   	assert_not @user2.valid?
   end
 
-  test "should destroy dependent objects" do 
-    #save user
+  test "associated friendship should be destroyed" do 
+    
     @user = users(:Buffy)
     @user2 = users(:Charles)
     
@@ -74,5 +74,35 @@ class UserTest < ActiveSupport::TestCase
     
   end
 
+  test "associated posts should be destroyed" do 
+    #when user is destroyed , posts should be destroyed too
+    @user = users(:Buffy)
+    assert_difference 'Post.count', 2 do 
+      2.times do 
+        @user.posts.create!(content: "supercalifragilisticexpialidocious...")
+      end
+    end
+
+    assert_difference 'Post.count', -2 do
+      @user.destroy
+    end
+  end
+
+  test "feed should consist of self and friend posts" do
+    #self
+    @user = users(:Buffy)
+    #create posts
+    @user.posts << posts(:oldest)
+    users(:Charles).posts << posts(:sushi)
+    users(:Jin).posts << posts(:most_recent)
+
+    #get friends
+    @user.friends << users(:Charles)
+    @user.inverse_friends << users(:Jin)
+
+    assert_equal 3, @user.feed.count
+    assert_equal posts(:most_recent), @user.feed.first
+    assert_equal posts(:oldest), @user.feed.last
+  end
 
 end

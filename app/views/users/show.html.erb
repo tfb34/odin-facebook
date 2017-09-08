@@ -1,22 +1,35 @@
-<h1><%= @user.name %>'s Homepage</h1>
+<div class="row">
+<h1 class="user-profile"><%= @user.name %>'s Homepage</h1>
+
 <%if user_signed_in?%>
 	<%if @user == current_user %>
-		<%=link_to 'edit', edit_user_registration_path%>
+		<%=link_to 'edit', edit_user_registration_path%></div>
+        <div class="col-sm-4">
+        <%= render 'shared/post_form'%>
+        </div>
+        <div class="col-sm-offset-1 col-sm-7">
+        <%= render 'users/shared/post_feed' %>
+        </div>
     <%else%>
-    	<%if current_user.friends.include?(@user) || current_user.inverse_friends.include?(@user)%>
-    		<%= link_to 'Remove friend', friendship_path(id: @user.id), method: :delete%>
+    	<%if current_user.friend?(@user)%>
+    		<%= link_to 'Remove friend', friendship_path(id: @user.id), method: :delete%></div><br>
+           
+            <%= render 'users/shared/post_feed'%>
+            
     	<%else%>
     		<%if current_user.followers.include?(@user)%>
-    			<%= link_to 'Accept friend', friendships_path(id: @user.id), method: :post%>
+    			<%= link_to 'Accept friend', friendships_path(id: @user.id), method: :post%></div>
     		<%else%>
     			<%if current_user.followings.include?(@user)%>
-    				<%= link_to 'Cancel friend request', friend_request_path(id: @user.id), method: :delete%>
+    				<%= link_to 'Cancel friend request', friend_request_path(id: @user.id), method: :delete%></div>
     			<%else%>
-    				<%= link_to 'Add friend', friend_requests_path(id: @user.id), method: :post%>
+    				<%= link_to 'Add friend', friend_requests_path(id: @user.id), method: :post%></div>
     			<%end%>
     		<%end%>
     	<%end%>
     <%end%>
 <%end%>
+
+
 
 

@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   def setup
   	@user = users(:Buffy)
   end
@@ -11,20 +13,22 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should NOT get new when logged in" do 
+    sign_in @user
+    get new_user_path
+    assert_response :redirect
+  end
+
   test "should get index" do 
   	get users_path
   	assert_response :success
+    assert_match @user.name, @response.body
+    assert_match users(:Charles).name, @response.body
   end
 
   test "should show user" do
   	get user_path(@user)
   	assert_response :success
-  end
-
-  test "should get edit" do 
-  	get edit_user_path(@user.id)
-  	assert_response :success
-    assert_match @user.email, @response.body
   end
 
   test "successful user creation" do 
@@ -36,46 +40,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
                                      :password_confirmation => "password"}
                             }
     end
-    #assert_redirected_to edit_user_registration_path(User.last)
+    #redirected twice. devise by default redirects to homepage. require_logout redirects to user's homepage
     follow_redirect!
-    #assert_equal 'Welcome! You have signed up successfully.', flash[:success]
+    follow_redirect!
     assert_match "Welcome! You have signed up successfully.", @response.body
   end
 
-  test "unsuccessful user creation" do 
-    assert_no_difference 'User.count' do 
-       post users_path, params: { user: {:name=>"Ragnor",
-                                     :email=>"",
-                                     :birthdate => Date.today - 30.years}
-                            }
-    end
-    assert_match "danger", @response.body 
-  end
+ 
 
-  test "unsuccessful user update" do 
-     patch user_path(@user), params: { user: {name: "",
-                                              email: "summers@example",
-                                              birthdate: @user.birthdate,
-                                              }
-                                      }
-     assert_match "error", @response.body
-  end
 
-  test "successful user update" do 
-     patch user_path(@user), params: { user: {name: @user.name,
-                                              email: "summerslay@example.com",
-                                              birthdate: @user.birthdate,
-                                              }
-                                      }
-     assert_match "successfully", @response.body
-  end
-
-  test "successfully destroy user" do 
-    assert_difference('User.count', -1) do 
-      delete user_path(@user)
-    end
-    assert_redirected_to root_path
-    assert_match "User profile was successfully deleted.", flash[:success]
-  end
 
 end

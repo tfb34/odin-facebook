@@ -10,4 +10,14 @@ Charles:
  name: Charles Xavier
  email: eggssavior@example.com
  birthdate: 1970-05-17
+
+Jin:
+  name: Kim Seok-jin
+  email: iwishbts@example.com
+  birthdate: 1992-12-04
+
+Uhtred:
+  name: Uhtred Ragnarson 
+  email: son_of_uhtred@example.com
+  birthdate: 1974-09-07
  

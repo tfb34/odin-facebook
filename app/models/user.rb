@@ -42,7 +42,19 @@ class User < ApplicationRecord
     has_many :inverse_friends, :through => :inverse_friendships,
     						   :source => :user
 	
-	
+	has_many :posts, dependent: :destroy
+
+	def feed
+		#obtain friend posts as well as self posts
+		#@posts = (posts + inverse_friends.posts +)
+		friend_ids = friends.collect { |e| e.id  } + inverse_friends.collect{|e| e.id}
+
+		@posts = Post.where('user_id=? OR user_id IN (?)', id, friend_ids)
+	end
+
+	def friend?(other)
+		friends.include?(other) || inverse_friends.include?(other)
+	end
 end
 
 
