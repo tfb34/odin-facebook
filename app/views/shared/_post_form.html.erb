@@ -1,4 +1,5 @@
-<div class="form-group" style= "padding-top: 20px;">
+
+<div class="post_form" style= "padding-top: 20px;">
 	<%=form_for :post, url: posts_path do |f|%>
 		<%=f.text_area :content, class: "form-control", rows:"5", placeholder: "Write anything..."%><br>
 		<%= f.submit 'Share', class: "btn btn-primary"%>

@@ -1,5 +1,6 @@
 <li>
  <%=link_to post.user.name, user_path(post.user)%>
+ <%= render partial: "like_relationships/like", locals: {object: post}%>
  <%=time_ago_in_words(post.created_at)%> ago<br>
  <%= post.content %>
 </li>

@@ -40,17 +40,16 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
   test "post form should appear for authorized user only" do 
   	#not logged in, visits a profile
   	get user_path(@buffy)
-  	assert_select "form", false 
+  	assert_select "div.post_form", false 
   	#charles goes to buffy's page
   	#logged in, visits own profile
   	sign_in @buffy
   	get user_path(@buffy)
-  	assert_select "form"
-  	#logged in, visits someone else's profile
-  	sign_in @buffy
-  	get user_path(@charles)
-  	assert_select "form", false
-
+  	assert_select "div.post_form", true
+    #logged in, visits someone else's profile
+    sign_in @buffy
+    get user_path(@charles)
+    assert_select "div.post_form", false
   end
 
 end

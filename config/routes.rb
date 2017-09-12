@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  #get 'like_relationships/create'
+
+  #get 'like_relationships/destroy'
+
   devise_for :users
   root 'static_pages#homepage'
   get '/homepage', to: 'static_pages#homepage'
@@ -11,4 +15,6 @@ Rails.application.routes.draw do
   resources :friendships, only: [:create, :destroy, :index]
 
   resources :posts, only: [:create, :destroy]
+
+  resources :like_relationships, only: [:create, :destroy]
 end

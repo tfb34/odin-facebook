@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830190655) do
+ActiveRecord::Schema.define(version: 20170911041450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20170830190655) do
     t.index ["friend_id"], name: "index_friendships_on_friend_id", using: :btree
     t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_friendships_on_user_id", using: :btree
+  end
+
+  create_table "like_relationships", force: :cascade do |t|
+    t.integer  "admirer_id"
+    t.integer  "like_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admirer_id", "like_id"], name: "index_like_relationships_on_admirer_id_and_like_id", unique: true, using: :btree
+    t.index ["admirer_id"], name: "index_like_relationships_on_admirer_id", using: :btree
+    t.index ["like_id"], name: "index_like_relationships_on_like_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
