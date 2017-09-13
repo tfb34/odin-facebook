@@ -1,0 +1,9 @@
+
+
+<%=form_for(current_user.like_relationships.find_by(like_id: object.id), remote: true, html: {method: :delete}) do |f| %>
+
+	<%= button_tag(type: "submit", class: "glyphicon glyphicon-thumbs-up", style: "background-color: red; border: none;") do%>
+		
+	<%end%>
+	<%=object.admirers.count%>
+<%end%>

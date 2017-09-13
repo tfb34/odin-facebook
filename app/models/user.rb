@@ -59,6 +59,11 @@ class User < ApplicationRecord
 	def friend?(other)
 		friends.include?(other) || inverse_friends.include?(other)
 	end
+
+	def likes?(thing)
+		likes.include?(thing)
+	end
+
 end
 
 
