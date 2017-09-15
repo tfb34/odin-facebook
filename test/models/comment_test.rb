@@ -1,10 +1,7 @@
-
-
 require 'test_helper'
 
-class CommentRelationshipTest < ActiveSupport::TestCase
-  
-  def setup 
+class CommentTest < ActiveSupport::TestCase
+def setup 
   	@comment = Comment.new(author_id: users(:Buffy).id, 
   						   post_id: posts(:sushi).id, 
   						   content: "so delicious!")
@@ -36,5 +33,4 @@ class CommentRelationshipTest < ActiveSupport::TestCase
   #test "destroyed when post is destroyed" do 
 
   #end
-
 end

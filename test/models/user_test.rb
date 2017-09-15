@@ -105,4 +105,8 @@ class UserTest < ActiveSupport::TestCase
     assert_equal posts(:oldest), @user.feed.last
   end
 
+  test "should be able to comment on post" do 
+    @user.comments.build(post_id: posts(:sushi), content: "hello")
+  end
+
 end

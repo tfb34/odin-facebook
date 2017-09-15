@@ -1,2 +1,0 @@
-class CommentRelationship < ApplicationRecord
-end

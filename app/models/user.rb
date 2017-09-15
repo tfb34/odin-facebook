@@ -48,6 +48,10 @@ class User < ApplicationRecord
 	has_many :like_relationships, foreign_key: "admirer_id", dependent: :destroy
 	has_many :likes, through: :like_relationships
 
+	#comment feature
+	has_many :comments, foreign_key: "author_id"
+	
+
 	def feed
 		#obtain friend posts as well as self posts
 		#@posts = (posts + inverse_friends.posts +)

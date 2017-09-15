@@ -6,4 +6,6 @@ class Post < ApplicationRecord
 
   has_many :like_relationships, foreign_key: "like_id", dependent: :destroy
   has_many :admirers, through: :like_relationships
+
+  has_many :comments
 end
