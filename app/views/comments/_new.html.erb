@@ -1,0 +1,9 @@
+
+<%= link_to comments_cancel_path(post_id: @post_id), remote: true do %>
+	<span class="glyphicon glyphicon-remove-circle"></span>
+<%end%>
+<%= form_for(current_user.comments.build, remote: true) do |f|%>
+    <%= hidden_field_tag :post_id, @post_id %>
+    <%= f.text_area :content, class: "form-control", rows: "2", placeholder: "Write comment..."%> <br>
+    <%= f.submit 'Send'%>
+<%end%>

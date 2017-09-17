@@ -1,0 +1,8 @@
+
+
+<li>
+	<%=link_to comment.author.name, user_path(comment.author)%> 
+	<%=time_ago_in_words(comment.created_at)%> ago<br>
+    <%=comment.content%>	
+</li>
+

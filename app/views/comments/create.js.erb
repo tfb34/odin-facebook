@@ -1,0 +1,8 @@
+
+$("#comment_form_<%= @post_id %>").html("");
+$("#glyphicon_<%=@post_id%> p").html("comments(<%=@comments.count%>)")
+$("#show_comments_<%= @post_id%>").append("<%=j render(@comment)%>")
+
+
+
+

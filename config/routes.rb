@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   #get 'like_relationships/create'
 
   #get 'like_relationships/destroy'
@@ -17,4 +18,8 @@ Rails.application.routes.draw do
   resources :posts, only: [:create, :destroy]
 
   resources :like_relationships, only: [:create, :destroy]
+
+  resources :comments, only: [:new, :create, :destroy, :index]
+  get 'comments/cancel'
+
 end
