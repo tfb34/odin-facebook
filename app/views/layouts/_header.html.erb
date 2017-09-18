@@ -1,19 +1,28 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
+
     <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
       <a class="navbar-brand" href= <%=root_path%> >TimeOut</a>
     </div>
 
-    <ul class="nav navbar-nav navbar-right">
-       <% if user_signed_in? %>
-         <li><%=link_to 'Friends', friendships_path%></li>
-         <li><a href= <%=friend_requests_path%>>Notifcations <span class="badge"><%=current_user.followers.count%></span></a></li>
-         <li><%=link_to current_user.name, user_path(current_user)%></li>
-         <li><%=link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
-       <%else%>
-	      <li><%= link_to 'Login', new_user_session_path%></li>
-	      <li><%= link_to 'Sign up', new_user_registration_path%></li>
-       <%end%>
-    </ul>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+         <% if user_signed_in? %>
+           <li><%=link_to 'Friends', friendships_path%></li>
+           <li><a href= <%=friend_requests_path%>>Notifcations <span class="badge"><%=current_user.followers.count%></span></a></li>
+           <li><%=link_to current_user.name, user_path(current_user)%></li>
+           <li><%=link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+         <%else%>
+          <li><%= link_to 'Login', new_user_session_path%></li>
+          <li><%= link_to 'Sign up', new_user_registration_path%></li>
+         <%end%>
+      </ul>
+    </div>
+
   </div>
 </nav>
