@@ -1,5 +1,6 @@
 <li>
-	 <%=link_to post.user.name, user_path(post.user)%>
+	<%=link_to gravatar_for(post.user, size: 30), user_path(post.user)%>
+	<%=link_to post.user.name, user_path(post.user)%>
 	 <!-- render partial: "like_relationships/like", locals: {object: post}-->
 	 
 	<%= render partial: 'like_form', locals: {object: post}%>

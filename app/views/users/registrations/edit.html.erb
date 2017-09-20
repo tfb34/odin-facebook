@@ -1,9 +1,12 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+<!--h2>Edit <%= resource_name.to_s.humanize %></h2>-->
+<h5 style="text-align: center">
+  <%=link_to gravatar_for(current_user, size: 120), user_path(current_user)%><br>
+  <a href="http://gravatar.com/emails" target="_blank">Change</a>
+</h5>
 
 
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-sm-6 col-sm-offset-3">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
           <%= devise_error_messages! %>

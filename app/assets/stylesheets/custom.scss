@@ -29,10 +29,19 @@ h2{
 
  .posts{
     list-style: none;
-    border: 1px solid blue;
+    border: 1px solid black;
 
  }
 
 textarea{
     resize: none;
+}
+
+.index-users {
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+#user-profile-header{
+    margin-left: 5%;
 }

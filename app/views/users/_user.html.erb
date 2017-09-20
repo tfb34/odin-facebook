@@ -1,2 +1,6 @@
-<!--profile pic goes here-->
-<li><a href= <%=user_url(user.id)%>><%= user.name %></a> 
+
+<h4>
+	<%= link_to gravatar_for(user, size: 50), user_path(user)%>
+	<a href= <%=user_url(user.id)%>><%= user.name %></a> 
+</h4>
+

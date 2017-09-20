@@ -1,12 +1,12 @@
-<h2>Friends</h2>
+<h2 style="padding-bottom: 5%;">Friends</h2>
 
 <ul>
 	<%current_user.friends.each do |f|%>
-		<li><%= link_to f.name, user_path(f)%></li>
+		<%=render f%>
 	<%end%>
-    <p>-------------------------------</p><br>
+    
 	<%current_user.inverse_friends.each do |f|%>
-		<li><%= link_to f.name, user_path(f)%></li>
+		<%=render f%>
 	<%end%>
 </ul>
 
