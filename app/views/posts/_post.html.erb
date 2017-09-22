@@ -1,23 +1,29 @@
-<li>
-	<%=link_to gravatar_for(post.user, size: 30), user_path(post.user)%>
-	<%=link_to post.user.name, user_path(post.user)%>
-	 <!-- render partial: "like_relationships/like", locals: {object: post}-->
-	 
-	<%= render partial: 'like_form', locals: {object: post}%>
-	 <%=time_ago_in_words(post.created_at)%> ago<br>
-	 <%= post.content %>
-	 <!--COMMENT LINK GOES HERE-->
-	 <%= link_to 'Comment', new_comment_path(post_id: post.id), remote: true%>
-	 <div id="comment_form_<%=post.id%>"></div>
-	 
-	 <!--show comments here-->
+<li style="margin-right: 5%;">
+	<div class="post-header">
+		<%=link_to gravatar_for(post.user, size: 30), user_path(post.user)%>
+		<%=link_to post.user.name, user_path(post.user), id: "post-name"%>
+		 <!-- render partial: "like_relationships/like", locals: {object: post}-->
+		 
+		 <%= render partial: 'shared/like_form', locals: {object: post}%>
+		 <%=link_to time_ago_in_words(post.created_at)+" ago", '#', class: "not-active"%><br>
+	 </div>
 
-	<%=link_to  comments_path(post_id: post.id), remote: true do %>
-		<div id="glyphicon_<%=post.id%>">
-			<p class="glyphicon glyphicon-menu-right">comments(<%=post.comments.count%>)</p>
-		</div>
-	<%end%>
-	
+	 <div id="post-content" style="font-size: 1em;"><%= post.content %></div>
+
+	 <!--COMMENT LINK GOES HERE-->
+	 <div id="post-footer">
+		 <!--'show comments' link-->
+
+		<%=link_to comments_path(post_id: post.id), remote: true, id: "show-comments-link" do %>
+			<div id="glyphicon_<%=post.id%>">
+				<p class="glyphicon glyphicon-menu-right">comments(<%=post.comments.count%>)</p>
+			</div>
+		<%end%>
+
+		<%= link_to 'reply', new_comment_path(post_id: post.id), remote: true, id: "reply"%>
+	</div>
+	<div id="comment_form_<%=post.id%>"></div>
+	<!--show comments-->
 	<ul id="show_comments_<%=post.id%>"></ul>
 </li>
 

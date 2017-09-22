@@ -1,0 +1,20 @@
+<div class="index-user-info"> 
+	<%=link_to gravatar_for(current_user, size: 100), users_path(current_user)%><hr>
+	<p><%=link_to current_user.name, user_path(current_user)%></p>
+	<p><%=link_to "friends(#{current_user.num_friends})", friendships_path%></p>
+</div>
+<br>
+<div class="timeline">
+
+	<%if @posts%>
+	    <ul class="all-posts">
+	       <%=render @posts%>
+	    </ul>
+
+	    <div class="text-center">
+	    	<%=will_paginate @posts%>
+	    </div>
+    <%end%>
+</div>
+
+

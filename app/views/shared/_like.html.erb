@@ -3,7 +3,7 @@
 <%=form_for(current_user.like_relationships.build, remote: true) do |f|%>
   <%=hidden_field_tag :object_id, object.id%>
 
-  <%= button_tag(type: "submit", class: "glyphicon glyphicon-thumbs-up", style: "background-color: green; border: none;") do%>
+  <%= button_tag(type: "submit", id: "thumbs",class: "glyphicon glyphicon-thumbs-up", style: "border: none;") do%>
 
   <%end%>
   <%=object.admirers.count%>

@@ -1,14 +1,11 @@
 class PostsController < ApplicationController
   
   before_action :require_login
-  #the index stuff should be in the user class
-  #show current users post and friends post. so i gues join them and organize by date?
-  #def index
-    #all_posts = current_user.feed
-   # @posts = current_user.feed.paginate(page: params[:page])
-   # render 'static_pages/homepage'
-  #end
-  #create new post. User must submit text
+
+  def index
+     @posts = current_user.feed.paginate(page: params[:page], :per_page => 10)
+  end
+ 
   def create
 
   	@post = current_user.posts.build(content: params[:post][:content])

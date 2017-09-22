@@ -6,6 +6,10 @@ h2{
 	text-align: center;
 }
 
+body{
+    background-color: #E6E6FA;
+}
+
 .alert-alert{
 	background-color: #f2dede;
 	border-color: #eed3d7;
@@ -30,7 +34,6 @@ h2{
  .posts{
     list-style: none;
     border: 1px solid black;
-
  }
 
 textarea{
@@ -45,3 +48,75 @@ textarea{
 #user-profile-header{
     margin-left: 5%;
 }
+
+.timeline{
+    background-color: #E6E6FA;
+}
+
+.timeline li{
+    background: white;
+    margin-bottom: 2%;
+  
+}
+.all-posts{
+    list-style: none;
+    padding-top:2%;
+}
+
+.post-header, #thumbs{
+    background-color: #F0FFF0;  
+}
+
+#post-name{
+    font-weight: bold;
+}
+
+.not-active{
+    pointer-events: none;
+    cursor: default;
+    color: #b4b4b4;
+    font-size: 13px;
+}
+.post-header{
+    padding-left: 0.5%;
+    padding-bottom: 0.5%;
+    padding-top: 0.5%;
+    border-radius: 5px;
+}
+
+#post-content{
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-bottom: 1%;
+    padding-right: 1%;
+    line-height: 1.5em;
+}
+
+#reply{
+    color: #3c3c3c;
+}
+#show-comments-link{
+   float: left;
+   padding-left: 1%;
+   padding-right: 2%;
+   color: #3c3c3c;
+}
+#post-footer{
+    font-size: 11px;
+    font-weight: normal;
+    padding-bottom: 5px;
+    margin-bottom: 1%;
+}
+
+.index-user-info{
+    padding-top: 2%;
+    padding-left: 4%;
+    padding-bottom: 2%;
+    vertical-align: bottom;
+    line-height: 1em;
+    background-color: white;
+}
+
+
+
+

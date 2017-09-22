@@ -22,10 +22,8 @@ class UsersController < ApplicationController
   #different permissions. current_user may comment and see their posts. friend may see their posts, otherwise, see nothing but a friend request link
   def show
   	@user = User.find_by(id: params[:id])
-    #user is found
-    @posts = @user.feed.paginate(page: params[:page], :per_page => 10)
+    @posts = @user.posts.paginate(page: params[:page], :per_page => 10)
     
-    #may want to obtain posts here
   end
 
 

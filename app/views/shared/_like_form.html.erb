@@ -1,0 +1,8 @@
+
+<div id="like_form_<%=object.id%>" style="display: inline-block; padding-right: 5px;">
+	<%if current_user.likes?(object)%>
+		<%= render partial: 'shared/unlike', locals: {object: object}%>
+	<%else%>
+		<%= render partial: 'shared/like', locals: {object: object}%>
+	<%end%>
+</div>

@@ -13,15 +13,11 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
   	@charles.posts << posts(:ghost_bear)
   end
 
-  test "should be signed in to see posts" do 
-  	get user_path(@buffy)
-  	assert_no_match posts(:sushi).content, @response.body
-  end
-
-  test "should see posts on friend's profile page when signed in" do 
-  	  sign_in @charles 
-  	  get user_path(@buffy)
-  	  assert_match posts(:ghost_bear).content, @response.body
+  test "should only show posts written by the user being visited" do 
+      sign_in @buffy 
+      get user_path(@charles)
+      assert_no_match posts(:sushi).content, @response.body
+      assert_match posts(:ghost_bear).content, @response.body
   end
 
   test "signed_in strangers should not see your posts feed" do

@@ -88,7 +88,7 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  test "feed should consist of self and friend posts" do
+  test "feed should return the current user's and friends' posts" do
     #self
     @user = users(:Buffy)
     #create posts
@@ -100,6 +100,7 @@ class UserTest < ActiveSupport::TestCase
     @user.friends << users(:Charles)
     @user.inverse_friends << users(:Jin)
 
+    #test that posts are in reverse order
     assert_equal 3, @user.feed.count
     assert_equal posts(:most_recent), @user.feed.first
     assert_equal posts(:oldest), @user.feed.last

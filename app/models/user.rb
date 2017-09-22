@@ -51,13 +51,11 @@ class User < ApplicationRecord
 	#comment feature
 	has_many :comments, foreign_key: "author_id"
 	
-
+	#returns current_user and friend posts in reverse order
 	def feed
-		#obtain friend posts as well as self posts
-		#@posts = (posts + inverse_friends.posts +)
 		friend_ids = friends.collect { |e| e.id  } + inverse_friends.collect{|e| e.id}
 
-		@posts = Post.where('user_id=? OR user_id IN (?)', id, friend_ids)
+		Post.where('user_id=? OR user_id IN (?)', id, friend_ids)
 	end
 
 	def friend?(other)
@@ -66,6 +64,10 @@ class User < ApplicationRecord
 
 	def likes?(thing)
 		likes.include?(thing)
+	end
+
+	def num_friends
+		friends.count+inverse_friends.count
 	end
 
 end
