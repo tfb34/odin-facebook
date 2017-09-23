@@ -8,6 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.5'
+#Use omniauth-instagram to allow users to sign in with their instagram accounts
+gem 'omniauth-instagram'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'bootstrap-will_paginate', '~> 1.0'
 #Use devise for authentication(ex. login)
