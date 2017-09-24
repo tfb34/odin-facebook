@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
-         :omniauthable, :omniauth_providers => [:instagram, :gplus]
+         :omniauthable, :omniauth_providers => [:gplus]
 	before_save {email.downcase!}
 	
 	attr_accessor :skip_birthdate
@@ -78,15 +78,9 @@ class User < ApplicationRecord
 
 	def self.from_omniauth(auth)
 		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-
-			puts "****email: #{auth.info.email}"
-			puts "****#{auth.extra.birthday}"
-			puts "****#{auth.extra.locale}"
 			user.email = auth.info.email
 			user.birthdate = auth.extra.birthday
 			user.skip_birthdate = true unless user.birthdate
-			puts "^^^^^^^^^^^^^extra#{auth.extra}"
-			puts "!!!!!!!!!#auth.info: #{auth.info}"
 			user.password = Devise.friendly_token[0,20]
 			user.name = auth.info.name # assuming the user model has a name
 			#user.image = auth.info.image #assuming the user model has an image

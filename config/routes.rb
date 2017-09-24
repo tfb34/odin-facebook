@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   #get 'like_relationships/destroy'
 
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
+
   root 'static_pages#homepage'
   get '/homepage', to: 'static_pages#homepage'
   get '/about', to: 'static_pages#about'
