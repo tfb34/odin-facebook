@@ -6,20 +6,22 @@
 
 <%if user_signed_in?%>
     <%if @user == current_user %>
-        <%=link_to 'edit', edit_user_registration_path%></div>
-        <div class="col-sm-4">
-        <%= render 'shared/post_form'%>
-        </div>
-        <div class="col-sm-offset-1 col-sm-7">
-        <%= render 'users/shared/post_feed' %>
-        </div>
+
+        <%if current_user.has_provider?%>
+            <%=link_to 'edit', edit_user_path%></div>
+        <%else%>
+            <%=link_to 'edit', edit_user_registration_path%></div>
+        <%end%>
+
+        <div class="col-sm-4"><%= render 'shared/post_form'%></div>
+        <div class="col-sm-offset-1 col-sm-7"><%= render 'users/shared/post_feed'%></div>
+
     <%else%>
         <%if current_user.friend?(@user)%>
             <%= link_to 'Remove friend', friendship_path(id: @user.id), method: :delete%></div><br>
-           
             <%= render 'users/shared/post_feed'%>
-            
         <%else%>
+
             <%if current_user.followers.include?(@user)%>
                 <%= link_to 'Accept friend', friendships_path(id: @user.id), method: :post%></div>
             <%else%>
@@ -29,6 +31,7 @@
                     <%= link_to 'Add friend', friend_requests_path(id: @user.id), method: :post%></div>
                 <%end%>
             <%end%>
+
         <%end%>
     <%end%>
 <%end%>
