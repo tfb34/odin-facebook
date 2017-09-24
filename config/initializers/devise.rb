@@ -252,7 +252,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
     config.omniauth :instagram, ENV['INSTAGRAM_ID'], ENV['INSTAGRAM_SECRET'], scope: 'basic'
-
+    #config.omniauth :gplus, ENV['GPLUS_ID'], ENV['GPLUS_SECRET'], scope: 'userinfo.email, userinfo.profile'
+    config.omniauth :gplus, ENV['GPLUS_ID'], ENV['GPLUS_SECRET'], scope: 'plus.login, userinfo.email, plus.profile.emails.read'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

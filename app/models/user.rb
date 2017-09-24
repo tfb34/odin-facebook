@@ -3,13 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
-         :omniauthable, :omniauth_providers => [:instagram]
+         :omniauthable, :omniauth_providers => [:instagram, :gplus]
 	before_save {email.downcase!}
 	
+	attr_accessor :skip_birthdate
 
 	validates :name, presence: true, length: {maximum: 70}
 
-	validates :birthdate, presence: true
+	validates :birthdate, presence: true, unless: :skip_birthdate
 
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 	validates_presence_of   :email
@@ -73,9 +74,15 @@ class User < ApplicationRecord
 
 	def self.from_omniauth(auth)
 		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+
 			puts "****email: #{auth.info.email}"
+			puts "****#{auth.extra.birthday}"
+			puts "****#{auth.extra.locale}"
 			user.email = auth.info.email
-			puts "#{auth.info}"
+			user.birthdate = auth.extra.birthday
+			user.skip_birthdate = true unless user.birthdate
+			puts "^^^^^^^^^^^^^extra#{auth.extra}"
+			puts "!!!!!!!!!#auth.info: #{auth.info}"
 			user.password = Devise.friendly_token[0,20]
 			user.name = auth.info.name # assuming the user model has a name
 			#user.image = auth.info.image #assuming the user model has an image
