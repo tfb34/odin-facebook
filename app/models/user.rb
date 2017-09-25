@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable,
          :omniauthable, :omniauth_providers => [:gplus]
 	before_save {email.downcase!}
-	
+	after_create :send_welcome_mail
+
 	attr_accessor :skip_birthdate
 
 	validates :name, presence: true, length: {maximum: 70}
@@ -89,6 +90,11 @@ class User < ApplicationRecord
     		# user.skip_confirmation!
 		end
 	end
+
+	def send_welcome_mail
+    	puts 'Sending email for create user'
+    	UserMailer.welcome_email(self).deliver
+ 	 end
 
 end
 
