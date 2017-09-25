@@ -35,8 +35,6 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if @user.update_attributes(user_params)
       flash.now[:success]= I18n.t 'devise.registrations.updated'
-    else
-      flash.now[:alert] = @user.errors.full_messages
     end
     render 'edit'
   end
