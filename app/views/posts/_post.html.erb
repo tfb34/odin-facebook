@@ -1,6 +1,10 @@
 <li style="margin-right: 5%;">
 	<div class="post-header">
-		<%=link_to gravatar_for(post.user, size: 30), user_path(post.user)%>
+		<%if post.user.avatar.present?%>
+			<%=image_tag post.user.avatar.url(:thumb), size: 30%>
+		<%else%>
+			<%=link_to gravatar_for(post.user, size: 30), user_path(post.user)%>
+		<%end%>
 		<%=link_to post.user.name, user_path(post.user), id: "post-name"%>
 		 <!-- render partial: "like_relationships/like", locals: {object: post}-->
 		 

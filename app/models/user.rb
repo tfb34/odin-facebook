@@ -4,6 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
          :omniauthable, :omniauth_providers => [:gplus]
+
+    #Paperclip
+    has_attached_file :avatar, styles: {medium: "300x300>", thumb: "100x100>"}, 
+    									default_url: "/images/:style/missing.png"
+	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+    
+    attr_accessor :delete_avatar
+
+    before_save {avatar.clear if delete_avatar == '1'}
+    
 	before_save {email.downcase!}
 	after_create :send_welcome_mail
 

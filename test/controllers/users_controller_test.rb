@@ -7,17 +7,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   	@user = users(:Buffy)
   end
 
-  test "should get new" do
-    get new_user_path
-    assert_match 'Email', @response.body
-    assert_response :success
-  end
+  #test "should get new" do
+   # get new_user_path
+   # assert_match 'Email', @response.body
+   # assert_response :success
+  #end
 
-  test "should NOT get new when logged in" do 
-    sign_in @user
-    get new_user_path
-    assert_response :redirect
-  end
+  #test "should NOT get new when logged in" do 
+   # sign_in @user
+   # get new_user_path
+    #assert_response :redirect
+  #end
 
   test "should get index" do 
   	get users_path

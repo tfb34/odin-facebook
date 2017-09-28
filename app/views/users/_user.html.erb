@@ -1,6 +1,10 @@
 
 <h4>
-	<%= link_to gravatar_for(user, size: 50), user_path(user)%>
+	<%if user.avatar.present?%>
+		<%=image_tag user.avatar.url(:medium), class: "pic"%>
+	<%else%>
+		<%= link_to gravatar_for(user, size: 50), user_path(user)%>
+	<%end%>
 	<a href= <%=user_url(user.id)%>><%= user.name %></a> 
 </h4>
 
