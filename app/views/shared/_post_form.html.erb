@@ -1,7 +1,28 @@
 
 <div class="post_form" style= "padding-top: 20px;">
 	<%=form_for :post, url: posts_path do |f|%>
-		<%=f.text_area :content, class: "form-control", rows:"5", placeholder: "Write anything..."%><br>
-		<%= f.submit 'Share', class: "btn btn-primary"%>
+		<%=f.text_area :content, class: "form-control", rows:"5", placeholder: "Write anything..."%>
+
+		<div class="form-control" style="height: 4em;">
+		<img id="blah" src="#" alt="" />
+		</div>
+	    <div class="row" style="border: 1px solid green;">
+			<div class="col-sm-4" id="upload_file" style="position: relative; width:2em;">
+
+				<%= f.file_field :picture, title: "Upload...", onchange: "readURL(this);", style: "border: 1px solid red;position: absolute; z-index: 2; width: 100%; opacity: 0;"%>
+
+				
+				<div id="image" style="border: 1px solid blue;position: absolute;font-size: 2em; "><span class="glyphicon glyphicon-picture"></span></div>
+
+			</div>
+
+			<%= f.submit 'Share', class: "btn btn-primary", style: "float: right;margin-right: 4.3%;"%>
+			
+		</div><br>
+
+		<img id="blah" src="#" alt=""/>
+		
 	<%end%>
 </div>
+
+

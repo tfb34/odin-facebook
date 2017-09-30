@@ -7,14 +7,12 @@ class PostsController < ApplicationController
   end
  
   def create
-
-  	@post = current_user.posts.build(content: params[:post][:content])
-    
+  	@post = current_user.posts.build(post_params)
   	if @post.valid?
   		@post.save
   		flash[:notice] = "New post has been added."
   	else
-  		flash[:error] = "Oops! Something went wrong. Post could not be added."
+  		flash[:error] = "Empty post could not be added."
   	end
   	#depends where posts can be created 
   	#if only on the users page then render user page(must render partial with post/new form)
@@ -25,4 +23,11 @@ class PostsController < ApplicationController
 
   def delete
   end
+
+  private
+
+  def post_params
+     params.require(:post).permit(:content, :picture)
+  end
+
 end

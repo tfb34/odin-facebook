@@ -12,7 +12,13 @@
 		 <%=link_to time_ago_in_words(post.created_at)+" ago", '#', class: "not-active"%><br>
 	 </div>
 
-	 <div id="post-content" style="font-size: 1em;"><%= post.content %></div>
+	 <!--post content-->
+	 <div id="post-content" style="font-size: 1em;">
+	 	<%= post.content %><br>
+	 	<%if  post.picture.present?%>
+	 		<%=image_tag post.picture.url, size:200%>
+	 	<%end%>
+	 </div>
 
 	 <!--COMMENT LINK GOES HERE-->
 	 <div id="post-footer">
