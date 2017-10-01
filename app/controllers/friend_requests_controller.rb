@@ -7,13 +7,14 @@ class FriendRequestsController < ApplicationController
   def create
   	@friend_request = current_user.sent_invites.build(receiver_id: params[:id])
   	if @friend_request.save
-  		flash.now[:notice] = "Friend request was successfully sent."
+  		flash[:notice] = "Friend request was successfully sent."
   	else
-  		flash.now[:error] = "Unable to send friend request." 
+  		flash[:error] = "Unable to send friend request." 
   	end
-  	@users = User.all
-    @user = current_user
-  	render 'users/index'
+  	#@users = User.all
+    #@user = current_user
+  	#render 'users/index'
+    redirect_back fallback_location: root_path
   end
 
   #cancel friend request

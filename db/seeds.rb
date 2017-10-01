@@ -18,3 +18,5 @@ User.create(name: 'Erik', email: 'example2@example.com',
 User.create(name: 'Hewlitt', email: 'example3@example.com',
 							birthdate: Date.new(1994,12, 14),
 							password: "password")
+
+

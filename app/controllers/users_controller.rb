@@ -4,7 +4,13 @@ class UsersController < ApplicationController
 
   #show all the users
   def index
-  	@users = User.all
+    if name = params[:user_name]
+      puts "****************" 
+      @users = User.where("name ilike '%#{name}%'")
+    else
+  	   @users = User.all
+    end
+    @users = @users.paginate(page: params[:page], :per_page => 10)
   end
    
   def show
