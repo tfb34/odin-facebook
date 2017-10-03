@@ -51,6 +51,6 @@ end
 end
 
 
-(2..20).times do |t|
+(2..20).each do |t|
     Friendship.create(user_id: 1, friend_id: t)
 end
