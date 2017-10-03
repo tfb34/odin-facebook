@@ -4,7 +4,9 @@
 
 h2{
 	text-align: center;
+    font-family: 'Cabin sketch', cursive;
 }
+
 
 body{
     background-color: #E6E6FA;
@@ -43,10 +45,6 @@ textarea{
 .index-users {
     margin-left: 5%;
     margin-top: 5%;
-}
-
-#user-profile-header{
-    margin-left: 5%;
 }
 
 .timeline{
@@ -126,6 +124,83 @@ textarea{
     width: 2.8em;
 }
 
+.middle{
+    text-align: center;
+    background-image: url('pexels-photo-sky.jpeg');
+    background-size: 100% 100%;
+
+}
+.row{
+    padding-left: 3%;
+}
+
+#login-button{
+    border: 1px solid white;
+    color: white;
+    width: 100%;
+}
+
+
+#description{
+  
+    padding: 5% 0 0 0;
+    font-family: 'Cabin sketch', cursive;
+    line-height: 2em;
+}
+#jumbotron{
+    background-color: rgba(96, 96, 82,0.6);
+    padding: 2% 5% 2% 5%;
+    margin-top: 5%;
+}
+
+.content{
+    color: white;
+}
+
+#content-title{
+    font-family: 'Cabin sketch', cursive;
+}
+
+.navbar-brand{
+    font-family: 'Cabin sketch', cursive;
+    font-size: 3em;
+}
+
+#gplus-button{
+    color: white;
+    background-color: rgb(223,74,50);
+    margin-top: 2%;
+}
 
 
 
+/* footer */
+
+footer {
+  border-top: 1px solid rgb(243,242,241);
+  margin-top: 45px;
+  padding-top: 5px;
+  color: #777;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}

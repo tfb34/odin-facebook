@@ -16,6 +16,7 @@
       <%= f.label :birthdate, "Birthdate:"%><br>
       <%= f.date_select :birthdate, {order: [:month, :day, :year], start_year: Date.today.year, end_year: Date.today.year - 100, class: "form-control"}, {required: true}%><br><br>
       
+      <%= f.label :avatar, "Avatar:" %>
       <%= f.file_field :avatar%><br>
       
       <%= f.label :password, "Password:" %>
