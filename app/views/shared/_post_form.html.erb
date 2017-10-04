@@ -1,27 +1,29 @@
 
-<div class="post_form" style= "padding-top: 20px;">
+<div class="post_form" style= "margin-bottom: 20%;">
 	<%=form_for :post, url: posts_path do |f|%>
 		<%=f.text_area :content, class: "form-control", rows:"5", placeholder: "Write anything..."%>
 
+
 		<div class="form-control" style="height: 4em;">
-		<img id="blah" src="#" alt="" />
-		</div>
-	    <div class="row" style="margin-left: 1%; margin-right: 0.5%;background-color: #eff0f1;">
-			<div class="col-sm-4" id="upload_file" style="position: relative; width:2em;">
+		    
+		    <div class="row">
+		    	<!--upload buttom-->
+				<div class="col-sm-4" id="upload_file" style="position: relative; width:2em;">
 
-				<%= f.file_field :picture, title: "Upload...", onchange: "readURL(this);", style: "position: absolute; z-index: 2; width: 100%; opacity: 0;"%>
+					<%= f.file_field :picture, title: "Upload...", onchange: "readURL(this);", style: "position: absolute; z-index: 2; width: 100%; opacity: 0;"%>
 
-				
-				<div id="image" style="position: absolute;font-size: 2em; "><span class="glyphicon glyphicon-picture" style="color: purple;"></span></div>
+					
+					<div id="image" style="position: absolute;font-size: 2em; "><span class="glyphicon glyphicon-picture" style="color: purple;"></span></div>
 
+				</div>
+				<!--picture chosen-->
+			    <div class="col-sm-offset-4 col-sm-4" style="float: right;">
+			    	<img id="blah" src="#" alt="" />
+			    </div>
 			</div>
+		</div>
 
-			<%= f.submit 'Share', class: "btn btn-primary", style: "float: right;"%>
-			
-		</div><br>
-
-		<img id="blah" src="#" alt=""/>
-		
+		<%= f.submit 'Share', class: "btn btn-primary btn-block" %>	
 	<%end%>
 </div>
 

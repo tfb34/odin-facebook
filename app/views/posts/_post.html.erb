@@ -16,7 +16,7 @@
 	 <div id="post-content" style="font-size: 1em;">
 	 	<%= post.content %><br>
 	 	<%if  post.picture.present?%>
-	 		<%=image_tag post.picture.url, size:200%>
+	 		<%=image_tag post.picture.url(:medium)%>
 	 	<%end%>
 	 </div>
 

@@ -1,10 +1,10 @@
 
 <%= form_for @user, html: {multipart: true}  do |f| %>
-	<div class="row">
+	
    		<div class="col-sm-6 col-sm-offset-3">
 
-        <div class="row">
-          <div class="col-sm-4 col-sm-offset-4", style= "text-align: center;">
+        <div class="row" style= "text-align: center;">
+          
             <%if current_user.avatar.present?%>
               <%=image_tag current_user.avatar.url(:medium), size: 120, style: "border-radius: 50%;"%><br>
               <%= f.check_box :delete_avatar%>Use gravatar
@@ -12,7 +12,7 @@
               <%=link_to gravatar_for(current_user, size: 120), user_path(current_user)%><br>
               <a href="http://gravatar.com/emails" target="_blank">Change gravatar</a>
             <%end%>
-          </div> 
+           
         </div>
 
           <%=render 'shared/error_messages'%>
@@ -31,5 +31,5 @@
           
 	      <%= f.submit "Update" , class: "btn btn-primary btn-block"%><br>
 	     </div>
-	</div>
+	
 <% end %>
