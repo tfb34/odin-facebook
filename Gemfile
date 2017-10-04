@@ -8,6 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.5'
+#Use to store pictures
+gem 'aws-sdk', '~> 2.3'
 #Use for generating fake data
 gem 'faker', '~> 1.6', '>= 1.6.6'
 #User Paperclip to let users upload pics
