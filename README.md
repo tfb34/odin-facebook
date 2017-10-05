@@ -50,3 +50,5 @@ A social network web app with certain core features such as users, profiles, "fr
   <li><a href="https://github.com/omniauth/omniauth">omniauth-gplus</a> - allow users to sign in with their gplus accounts</li>
   <li><a href="https://github.com/thoughtbot/paperclip">paperclip</a> - file attachment management</li>
 </ul>
+
+  <h4>For more information, visit <a href="https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project">the odin project</a></h4>
