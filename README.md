@@ -20,7 +20,7 @@ A social network web app with certain core features such as users, profiles, "fr
     Open your terminal and change directory to your preference. 
     In the terminal, type : 
     
-        git clone https://github.com/tfb34/odin-facebook.git
+      git clone https://github.com/tfb34/odin-facebook.git
     
    <p> Change directory to odin-timeout</p>
     
