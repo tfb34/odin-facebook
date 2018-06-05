@@ -1,4 +1,4 @@
-# odin-facebook
+# Timeout
 
 A social network web app with certain core features such as users, profiles, "friending", posts, "liking", and news feed. 
 
