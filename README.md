@@ -1,6 +1,6 @@
 # Timeout
 
-A social network web app with certain core features such as users, profiles, "friending", posts, "liking", and news feed. 
+A social network web application that allows users to connect and share with other people. Users can sign in with their gmail accounts and customize their profile. Users can create posts and upload images only visible to friends. Users can also send and accept friend requests as well as upvote posts. 
 
 ## Getting Started
 <p>To access the app via browser, https://time-out.herokuapp.com/ .</p>
