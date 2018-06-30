@@ -18,7 +18,7 @@ A social network web application that allows users to connect and share with oth
 ### Installing
 Click on the 'clone or download' button and copy the web URL provided.  Open your terminal and change directory to your preference. In the terminal, type : 
 ```
-git clone https://github.com/tfb34/odin-facebook.git
+git clone https://github.com/tfb34/timeout.git
 ```
 Change directory to odin-timeout
 ```
