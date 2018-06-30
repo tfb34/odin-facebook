@@ -20,9 +20,9 @@ Click on the 'clone or download' button and copy the web URL provided.  Open you
 ```
 git clone https://github.com/tfb34/timeout.git
 ```
-Change directory to odin-timeout
+Change directory to timeout
 ```
-cd odin-timeout
+cd timeout
 ```
 Install gems stored in Gemfile :
 ```
