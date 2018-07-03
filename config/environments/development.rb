@@ -19,6 +19,7 @@ Rails.application.configure do
     access_key_id: ENV['ACCESS_KEY_ID'],
     secret_access_key: ENV['SECRET_ACCESS_KEY'],
     s3_region: ENV['REGION'],
+    s3_host_name: ENV['HOST_NAME']
     }
   }
   # Enable/disable caching. By default caching is disabled.
