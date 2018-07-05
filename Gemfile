@@ -9,11 +9,11 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.5'
 #Use to store pictures
-gem 'aws-sdk', '~> 2.6'
+gem 'aws-sdk', '~> 2.3'
 #Use for generating fake data
 gem 'faker', '~> 1.6', '>= 1.6.6'
 #User Paperclip to let users upload pics
-gem "paperclip", "~> 2.7"
+gem "paperclip", "~> 5.0.0"
 gem 'omniauth-oauth2', '~>1.3.1'
 #Use omniauth-instagram to allow users to sign in with their instagram accounts
 gem 'omniauth-gplus', '~> 2.0'
