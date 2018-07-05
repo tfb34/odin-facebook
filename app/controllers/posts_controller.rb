@@ -8,9 +8,10 @@ class PostsController < ApplicationController
  
   def create
   	@post = current_user.posts.build(post_params)
+   
   	if @post.valid?
   		@post.save
-  
+    puts call
   		flash[:notice] = "New post has been added."
   	else
   		flash[:error] = "Empty post could not be added."
