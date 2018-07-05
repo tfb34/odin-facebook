@@ -11,7 +11,6 @@ class PostsController < ApplicationController
    
   	if @post.valid?
   		@post.save
-    puts call
   		flash[:notice] = "New post has been added."
   	else
   		flash[:error] = "Empty post could not be added."
