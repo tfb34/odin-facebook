@@ -13,7 +13,7 @@ gem 'aws-sdk', '~> 2.6'
 #Use for generating fake data
 gem 'faker', '~> 1.6', '>= 1.6.6'
 #User Paperclip to let users upload pics
-gem "paperclip", "~> 5.1.0"
+gem "paperclip", "~> 2.7"
 gem 'omniauth-oauth2', '~>1.3.1'
 #Use omniauth-instagram to allow users to sign in with their instagram accounts
 gem 'omniauth-gplus', '~> 2.0'
